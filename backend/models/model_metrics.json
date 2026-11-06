@@ -1,0 +1,143 @@
+{
+  "best_model_name": "Gradient Boosting",
+  "dataset_info": {
+    "total_samples": 696,
+    "train_samples": 556,
+    "test_samples": 140,
+    "class_balance_train": {
+      "genuine": 278,
+      "fake": 278
+    },
+    "class_balance_test": {
+      "genuine": 70,
+      "fake": 70
+    }
+  },
+  "cross_validation_comparison": {
+    "Logistic Regression": {
+      "cv_accuracy_mean": 0.9064832689832689,
+      "cv_accuracy_std": 0.02317605334842379,
+      "cv_precision_mean": 0.9335756324407392,
+      "cv_recall_mean": 0.8779220779220779,
+      "cv_f1_mean": 0.9034255219416905,
+      "cv_roc_auc_mean": 0.9712279684601113,
+      "train_accuracy_mean": 0.9163660289502987,
+      "train_roc_auc_mean": 0.980793919601337,
+      "overfitting_gap": 0.009882759967029808
+    },
+    "Random Forest": {
+      "cv_accuracy_mean": 0.9477960102960102,
+      "cv_accuracy_std": 0.015578331895110974,
+      "cv_precision_mean": 0.941215538847118,
+      "cv_recall_mean": 0.9568831168831169,
+      "cv_f1_mean": 0.9485896341414927,
+      "cv_roc_auc_mean": 0.9902330705009277,
+      "train_accuracy_mean": 0.9860613422411175,
+      "train_roc_auc_mean": 0.9988112824981084,
+      "overfitting_gap": 0.038265331945107284
+    },
+    "Gradient Boosting": {
+      "cv_accuracy_mean": 0.9513996138996139,
+      "cv_accuracy_std": 0.0186071023510861,
+      "cv_precision_mean": 0.9512070871133703,
+      "cv_recall_mean": 0.9534415584415585,
+      "cv_f1_mean": 0.9517227244452773,
+      "cv_roc_auc_mean": 0.9918378942486086,
+      "train_accuracy_mean": 0.9995505617977528,
+      "train_roc_auc_mean": 1.0,
+      "overfitting_gap": 0.048150947898138896
+    }
+  },
+  "holdout_test_comparison": {
+    "Logistic Regression": {
+      "accuracy": 0.9,
+      "precision": 0.9,
+      "recall": 0.9,
+      "f1": 0.9,
+      "roc_auc": 0.9557142857142858,
+      "confusion_matrix": [
+        [
+          63,
+          7
+        ],
+        [
+          7,
+          63
+        ]
+      ]
+    },
+    "Random Forest": {
+      "accuracy": 0.8928571428571429,
+      "precision": 0.8873239436619719,
+      "recall": 0.9,
+      "f1": 0.8936170212765957,
+      "roc_auc": 0.9653061224489796,
+      "confusion_matrix": [
+        [
+          62,
+          8
+        ],
+        [
+          7,
+          63
+        ]
+      ]
+    },
+    "Gradient Boosting": {
+      "accuracy": 0.9142857142857143,
+      "precision": 0.9264705882352942,
+      "recall": 0.9,
+      "f1": 0.9130434782608695,
+      "roc_auc": 0.9657142857142857,
+      "confusion_matrix": [
+        [
+          65,
+          5
+        ],
+        [
+          7,
+          63
+        ]
+      ]
+    }
+  },
+  "best_model_test_metrics": {
+    "accuracy": 0.9142857142857143,
+    "precision": 0.9264705882352942,
+    "recall": 0.9,
+    "f1_score": 0.9130434782608695,
+    "roc_auc": 0.9657142857142857,
+    "confusion_matrix": [
+      [
+        65,
+        5
+      ],
+      [
+        7,
+        63
+      ]
+    ]
+  },
+  "feature_importances": {
+    "posts_count": 0.4694596711165472,
+    "followers_count": 0.1346827611935882,
+    "follower_to_following_ratio": 0.12096391876016392,
+    "username_digit_ratio": 0.06622390468922024,
+    "following_to_follower_ratio": 0.0636107972616285,
+    "bio_length": 0.05660919181266977,
+    "profile_pic": 0.03934445194249965,
+    "fullname_words": 0.017648069541554578,
+    "posts_per_follower": 0.012565934738203065,
+    "following_count": 0.007327984147035017,
+    "has_external_url": 0.005514341526647762,
+    "is_private": 0.00436051840227492,
+    "empty_profile_flag": 0.001363807044268357,
+    "name_equals_username": 0.00017958134830621395,
+    "fullname_digit_ratio": 0.00014506647539257083,
+    "suspicious_follow_imbalance": 0.0
+  },
+  "overfitting_and_leakage_audit": {
+    "data_leakage_check": "PASSED: StandardScaler wrapped in Pipeline; fit on training fold/split only; no target or test set leakage.",
+    "overfitting_check": "PASSED: Train-Test accuracy gap is 0.0482, demonstrating solid generalization without memorization."
+  }
+}

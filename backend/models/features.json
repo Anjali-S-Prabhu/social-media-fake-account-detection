@@ -1,0 +1,22 @@
+{
+  "feature_columns": [
+    "profile_pic",
+    "username_digit_ratio",
+    "fullname_words",
+    "fullname_digit_ratio",
+    "name_equals_username",
+    "bio_length",
+    "has_external_url",
+    "is_private",
+    "posts_count",
+    "followers_count",
+    "following_count",
+    "follower_to_following_ratio",
+    "following_to_follower_ratio",
+    "posts_per_follower",
+    "suspicious_follow_imbalance",
+    "empty_profile_flag"
+  ],
+  "count": 16,
+  "target": "fake (0=genuine, 1=fake)"
+}
