@@ -88,13 +88,6 @@ export default function ResultsSection({ result, username }: ResultsSectionProps
           </div>
         ))}
       </div>
-
-      <div className="mt-8 p-4 bg-blue-50 border-2 border-blue-200 rounded-xl">
-        <p className="text-sm text-blue-800">
-          <strong>Note:</strong> This analysis is based on common patterns found in fake accounts.
-          Always verify accounts through official channels and use your best judgment.
-        </p>
-      </div>
     </div>
   );
 }

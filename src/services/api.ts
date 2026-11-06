@@ -9,10 +9,11 @@ export interface ProfilePayload {
   followers: string;
   following: string;
   bio: string;
-  dateJoined: string;
-  location: string;
+  hasProfilePic?: boolean;
   isVerified: boolean;
-  imageFile: File | null;
+  dateJoined?: string;
+  location?: string;
+  imageFile?: File | null;
 }
 
 export class ApiError extends Error {
@@ -51,7 +52,9 @@ export async function analyzeProfileApi(payload: ProfilePayload): Promise<Analys
     followers: payload.followers,
     following: payload.following,
     bio: payload.bio,
-    hasProfilePic: payload.imageFile !== null,
+    hasProfilePic: typeof payload.hasProfilePic === 'boolean'
+      ? payload.hasProfilePic
+      : (payload.imageFile !== null && payload.imageFile !== undefined),
     isVerified: payload.isVerified,
     dateJoined: payload.dateJoined || null,
     location: payload.location || null,

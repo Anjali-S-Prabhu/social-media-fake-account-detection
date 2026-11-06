@@ -102,32 +102,25 @@ export default function RegisterPage({ onSuccess, onNavigateLogin, onNavigateHom
             </div>
 
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight mb-4">
-              Join thousands of analysts guarding social integrity.
+              Create your account
             </h3>
             <p className="text-sm text-slate-300 leading-relaxed mb-6">
-              Create your account to unlock continuous Instagram profile surveillance, threat triage, team workspaces, and custom model telemetry.
+              Start auditing Instagram accounts and managing threat detection reports.
             </p>
 
             <div className="space-y-3.5 mb-8">
               <div className="flex items-start gap-3 text-xs text-slate-300">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-white block">Unlimited Profile Audits</strong>
-                  <span>Analyze public & private handles without rate limits</span>
+                  <strong className="text-white block">Unlimited Profile Scans</strong>
+                  <span>Analyze Instagram profiles in real time</span>
                 </div>
               </div>
               <div className="flex items-start gap-3 text-xs text-slate-300">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-white block">Explainable AI Risk Factors</strong>
-                  <span>Inspect follower ratios, bio tokens, digits, and activity anomalies</span>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 text-xs text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <div>
-                  <strong className="text-white block">Exportable Audit Logs</strong>
-                  <span>Download forensic evidence reports in CSV & JSON formats</span>
+                  <strong className="text-white block">Threat History & Logs</strong>
+                  <span>Track past scans and download CSV logs</span>
                 </div>
               </div>
             </div>
@@ -185,7 +178,8 @@ export default function RegisterPage({ onSuccess, onNavigateLogin, onNavigateHom
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Anjali Sharma"
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+                    style={{ color: '#ffffff', backgroundColor: '#020617' }}
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white font-medium placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
                   />
                 </div>
               </div>
@@ -205,7 +199,8 @@ export default function RegisterPage({ onSuccess, onNavigateLogin, onNavigateHom
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="analyst@domain.com"
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+                    style={{ color: '#ffffff', backgroundColor: '#020617' }}
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white font-medium placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
                   />
                 </div>
               </div>
@@ -222,7 +217,8 @@ export default function RegisterPage({ onSuccess, onNavigateLogin, onNavigateHom
                   <select
                     value={role}
                     onChange={(e) => setRole(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition cursor-pointer"
+                    style={{ color: '#ffffff', backgroundColor: '#020617' }}
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white font-medium text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition cursor-pointer"
                   >
                     <option value="Security Analyst">Cybersecurity Analyst</option>
                     <option value="Brand Protector">Brand Protection Specialist</option>
@@ -248,7 +244,8 @@ export default function RegisterPage({ onSuccess, onNavigateLogin, onNavigateHom
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="••••••••"
-                      className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+                      style={{ color: '#ffffff', backgroundColor: '#020617' }}
+                      className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white font-medium placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
                     />
                     <button
                       type="button"
@@ -274,7 +271,8 @@ export default function RegisterPage({ onSuccess, onNavigateLogin, onNavigateHom
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       placeholder="••••••••"
-                      className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+                      style={{ color: '#ffffff', backgroundColor: '#020617' }}
+                      className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white font-medium placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
                     />
                   </div>
                 </div>
@@ -347,3 +345,4 @@ export default function RegisterPage({ onSuccess, onNavigateLogin, onNavigateHom
     </div>
   );
 }
+

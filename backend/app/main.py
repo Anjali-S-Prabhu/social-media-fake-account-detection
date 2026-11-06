@@ -96,14 +96,14 @@ app.include_router(dashboard_router)
 # Mount frontend static files if dist exists
 frontend_dist = Path(__file__).resolve().parent.parent.parent / "dist"
 assets_dir = frontend_dist / "assets"
-index_html_content = ""
-if frontend_dist.exists() and (frontend_dist / "index.html").exists():
-    try:
-        index_html_content = (frontend_dist / "index.html").read_text(encoding="utf-8")
-    except Exception as e:
-        logger.warning(f"Could not read index.html: {e}")
 
-if index_html_content:
+def get_index_html() -> str:
+    index_file = frontend_dist / "index.html"
+    if index_file.is_file():
+        return index_file.read_text(encoding="utf-8")
+    return "<!DOCTYPE html><html><body><div id='root'></div></body></html>"
+
+if frontend_dist.exists() and (frontend_dist / "index.html").exists():
     if assets_dir.exists():
         app.mount("/assets", StaticFiles(directory=str(assets_dir)), name="assets")
 
@@ -113,7 +113,7 @@ if index_html_content:
         user_agent = request.headers.get("user-agent", "").lower()
         # Serve React Single Page Application to browsers
         if "text/html" in accept or any(b in user_agent for b in ["mozilla", "chrome", "safari", "edge"]):
-            return HTMLResponse(content=index_html_content)
+            return HTMLResponse(content=get_index_html())
         # Serve JSON metadata to automated API clients / tests
         return {
             "service": "FADE Fake Account Detection API",
@@ -131,7 +131,7 @@ if index_html_content:
         target_file = frontend_dist / full_path
         if target_file.is_file():
             return FileResponse(str(target_file))
-        return HTMLResponse(content=index_html_content)
+        return HTMLResponse(content=get_index_html())
 else:
     @app.get("/", tags=["Root"])
     async def root():

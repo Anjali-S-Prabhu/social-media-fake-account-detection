@@ -41,11 +41,12 @@ interface ProfileData {
   posts: string;
   followers: string;
   following: string;
-  dateJoined: string;
-  location: string;
   bio: string;
+  hasProfilePic: boolean;
   isVerified: boolean;
-  imageFile: File | null;
+  dateJoined?: string;
+  location?: string;
+  imageFile?: File | null;
 }
 
 type ViewMode = 'landing' | 'login' | 'register' | 'dashboard';
@@ -191,7 +192,7 @@ function App() {
               onClick={() => navigateTo('landing')}
               className={`transition-colors cursor-pointer ${activeView === 'landing' ? 'text-blue-400 font-bold' : 'hover:text-white'}`}
             >
-              Public Scanner
+              Scanner
             </button>
 
             <button
@@ -202,14 +203,6 @@ function App() {
               <span>Dashboard</span>
               {!session && <Lock className="w-3 h-3 text-slate-500 ml-0.5" />}
             </button>
-
-            {activeView === 'landing' && (
-              <>
-                <a href="#how-it-works" className="hover:text-blue-400 transition-colors">How It Works</a>
-                <a href="#model-benchmarks" className="hover:text-blue-400 transition-colors">Model Benchmarks</a>
-                <a href="#recent-history" className="hover:text-blue-400 transition-colors">Recent Scans</a>
-              </>
-            )}
           </nav>
 
           {/* Right Action Buttons */}
@@ -312,68 +305,43 @@ function App() {
         {activeView === 'landing' && (
           <>
             {/* Hero Section */}
-            <section className="container mx-auto px-4 pt-12 pb-8 text-center max-w-4xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs font-semibold mb-6 shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-                <span>Trained Gradient Boosting ML Pipeline • 91.4% Benchmark Accuracy</span>
-              </div>
-
+            <section className="container mx-auto px-4 pt-12 pb-6 text-center max-w-3xl">
               <div className="flex justify-center mb-6">
                 <div className="p-3 bg-slate-900/80 rounded-2xl border border-slate-700/60 shadow-2xl backdrop-blur-md">
                   <AtomLoader />
                 </div>
               </div>
 
-              <h1 className="text-4xl sm:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-blue-200 tracking-tight leading-tight mb-4">
-                Unmask Fake Instagram Accounts with AI
+              <h1 className="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-blue-200 tracking-tight leading-tight mb-3">
+                Instagram Fake Account Detector
               </h1>
-              <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                Diagnose profile authenticity, mass-follow spam rings, bot handles, and impersonator accounts using 16 cross-validated behavioral & structural features.
+              <p className="text-base text-slate-300 max-w-xl mx-auto leading-relaxed mb-6">
+                Analyze any Instagram profile to detect bot accounts, fake followers, and impersonators.
               </p>
 
-              {/* Action CTA Buttons */}
-              <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center justify-center gap-3">
                 <a
                   href="#detector-section"
-                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-sm shadow-lg shadow-blue-500/25 flex items-center gap-2 transition transform hover:-translate-y-0.5 cursor-pointer"
+                  className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-sm shadow-lg shadow-blue-500/25 flex items-center gap-2 transition cursor-pointer"
                 >
                   <Search className="w-4 h-4" />
-                  <span>Try Free Profile Scanner</span>
+                  <span>Scan Account</span>
                 </a>
 
                 <button
                   onClick={handleDashboardClick}
-                  className="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm shadow-md flex items-center gap-2 transition cursor-pointer"
+                  className="px-6 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm shadow-md flex items-center gap-2 transition cursor-pointer"
                 >
                   <LayoutDashboard className="w-4 h-4 text-blue-400" />
-                  <span>{session ? 'Enter Dashboard' : 'Analyst Dashboard'}</span>
+                  <span>{session ? 'Go to Dashboard' : 'Dashboard'}</span>
                   <ArrowRight className="w-4 h-4 text-slate-400" />
                 </button>
-              </div>
-
-              {/* Quick Metrics KPI Strip */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto mt-10">
-                <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md">
-                  <div className="text-2xl font-black text-blue-400">91.4%</div>
-                  <div className="text-xs text-slate-400 mt-0.5">Test Accuracy</div>
-                </div>
-                <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md">
-                  <div className="text-2xl font-black text-indigo-400">0.966</div>
-                  <div className="text-xs text-slate-400 mt-0.5">ROC-AUC Score</div>
-                </div>
-                <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md">
-                  <div className="text-2xl font-black text-emerald-400">16</div>
-                  <div className="text-xs text-slate-400 mt-0.5">Engineered Signals</div>
-                </div>
-                <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md">
-                  <div className="text-2xl font-black text-amber-400">&lt; 15ms</div>
-                  <div className="text-xs text-slate-400 mt-0.5">Inference Speed</div>
-                </div>
               </div>
             </section>
 
             {/* Live Detector Section */}
-            <section id="detector-section" className="container mx-auto px-4 py-8">
+            <section id="detector-section" className="container mx-auto px-4 py-6">
               <div className="flex flex-col items-center gap-8">
                 {!result ? (
                   <UploadSection
@@ -387,155 +355,29 @@ function App() {
                     <ResultsSection result={result} username={username} />
                     <button
                       onClick={handleReset}
-                      className="mt-6 px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-bold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-xl hover:shadow-2xl flex items-center gap-2 transform hover:-translate-y-0.5 cursor-pointer"
+                      className="mt-6 px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-bold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-xl flex items-center gap-2 cursor-pointer"
                     >
                       <RefreshCw className="w-4 h-4" />
-                      <span>Analyze Another Profile</span>
+                      <span>Scan Another Account</span>
                     </button>
                   </div>
                 )}
               </div>
             </section>
 
-            {/* How It Works Section */}
-            <section id="how-it-works" className="container mx-auto px-4 py-16 max-w-5xl">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl font-extrabold text-white tracking-tight">How FADE Detects Deception</h2>
-                <p className="text-slate-400 text-sm mt-2 max-w-xl mx-auto">
-                  Our ML model combines topological network metrics, textual heuristics, and temporal indicators.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-blue-500/50 transition-all backdrop-blur-md shadow-xl group">
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4 border border-blue-500/20 group-hover:scale-110 transition-transform">
-                    <Activity className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-lg font-bold text-white mb-2">Follower Dynamics & Topology</h3>
-                  <p className="text-sm text-slate-400 leading-relaxed">
-                    Calculates following-to-follower ratios and detects follow-unfollow automation scripts and artificial follower inflations.
-                  </p>
-                </div>
-
-                <div className="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-indigo-500/50 transition-all backdrop-blur-md shadow-xl group">
-                  <div className="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-4 border border-indigo-500/20 group-hover:scale-110 transition-transform">
-                    <Cpu className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-lg font-bold text-white mb-2">Syntactic Handle Entropy</h3>
-                  <p className="text-sm text-slate-400 leading-relaxed">
-                    Evaluates digit density, consecutive numeric suffix patterns, and delimiter frequency characteristic of bulk programmatic account creators.
-                  </p>
-                </div>
-
-                <div className="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-emerald-500/50 transition-all backdrop-blur-md shadow-xl group">
-                  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-4 border border-emerald-500/20 group-hover:scale-110 transition-transform">
-                    <CheckCircle2 className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-lg font-bold text-white mb-2">Metadata & Activity Calibration</h3>
-                  <p className="text-sm text-slate-400 leading-relaxed">
-                    Correlates post frequency with account age, blank bio rates, external URL phishing signals, and official platform verification status.
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            {/* Live Model Benchmarks Section */}
-            <section id="model-benchmarks" className="container mx-auto px-4 py-16 max-w-5xl border-t border-slate-800/80">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-8 bg-slate-900/80 border border-slate-800 rounded-3xl p-8 backdrop-blur-md shadow-2xl">
-                <div className="max-w-md">
-                  <span className="text-xs font-bold text-blue-400 uppercase tracking-wider">Trained Pipeline</span>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1 mb-3">
-                    {modelInfo?.model_name || 'Gradient Boosting Classifier'}
-                  </h2>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                    Trained on the Instagram Spammer Detection benchmark dataset. Tuned with 5-fold cross-validation and strict data-leakage boundaries.
-                  </p>
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between text-sm py-1.5 border-b border-slate-800">
-                      <span className="text-slate-400">Holdout Accuracy:</span>
-                      <span className="font-bold text-white">{modelInfo?.metrics?.accuracy ? (modelInfo.metrics.accuracy * 100).toFixed(1) + '%' : '91.4%'}</span>
-                    </div>
-                    <div className="flex items-center justify-between text-sm py-1.5 border-b border-slate-800">
-                      <span className="text-slate-400">Precision (Fake Class):</span>
-                      <span className="font-bold text-emerald-400">{modelInfo?.metrics?.precision ? (modelInfo.metrics.precision * 100).toFixed(1) + '%' : '92.6%'}</span>
-                    </div>
-                    <div className="flex items-center justify-between text-sm py-1.5 border-b border-slate-800">
-                      <span className="text-slate-400">Recall (Fake Class):</span>
-                      <span className="font-bold text-blue-400">{modelInfo?.metrics?.recall ? (modelInfo.metrics.recall * 100).toFixed(1) + '%' : '90.0%'}</span>
-                    </div>
-                    <div className="flex items-center justify-between text-sm py-1.5">
-                      <span className="text-slate-400">ROC-AUC Score:</span>
-                      <span className="font-bold text-indigo-400">{modelInfo?.metrics?.roc_auc ? modelInfo.metrics.roc_auc.toFixed(3) : '0.966'}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex-1 w-full bg-slate-950/60 p-6 rounded-2xl border border-slate-800">
-                  <div className="flex items-center gap-2 mb-4 text-xs font-bold text-slate-300 uppercase tracking-wider">
-                    <BarChart3 className="w-4 h-4 text-blue-400" />
-                    <span>Top Predictive Features</span>
-                  </div>
-                  <div className="space-y-3.5">
-                    <div>
-                      <div className="flex justify-between text-xs mb-1">
-                        <span className="text-slate-300 font-medium">Post Volume (`posts_count`)</span>
-                        <span className="text-blue-400 font-bold">46.9%</span>
-                      </div>
-                      <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                        <div className="bg-blue-500 h-full rounded-full" style={{ width: '46.9%' }}></div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="flex justify-between text-xs mb-1">
-                        <span className="text-slate-300 font-medium">Follower Volume (`followers_count`)</span>
-                        <span className="text-indigo-400 font-bold">13.5%</span>
-                      </div>
-                      <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                        <div className="bg-indigo-500 h-full rounded-full" style={{ width: '13.5%' }}></div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="flex justify-between text-xs mb-1">
-                        <span className="text-slate-300 font-medium">Follower Ratio (`follower_ratio`)</span>
-                        <span className="text-emerald-400 font-bold">12.1%</span>
-                      </div>
-                      <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                        <div className="bg-emerald-500 h-full rounded-full" style={{ width: '12.1%' }}></div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="flex justify-between text-xs mb-1">
-                        <span className="text-slate-300 font-medium">Username Digit Ratio</span>
-                        <span className="text-amber-400 font-bold">6.6%</span>
-                      </div>
-                      <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                        <div className="bg-amber-500 h-full rounded-full" style={{ width: '6.6%' }}></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
             {/* Recent Scan History Section */}
             {recentHistory.length > 0 && (
-              <section id="recent-history" className="container mx-auto px-4 py-12 max-w-4xl border-t border-slate-800/80">
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <h3 className="text-xl font-bold text-white">Recent Profile Scans</h3>
-                    <p className="text-slate-400 text-xs mt-0.5">Live analyses performed by the local FastAPI server.</p>
-                  </div>
-                  <span className="text-xs px-2.5 py-1 bg-slate-800 text-slate-300 rounded-lg border border-slate-700">
-                    {recentHistory.length} Scans Cached
+              <section id="recent-history" className="container mx-auto px-4 py-10 max-w-4xl border-t border-slate-800/80">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-bold text-white">Recent Scans</h3>
+                  <span className="text-xs px-2.5 py-0.5 bg-slate-800 text-slate-300 rounded-lg border border-slate-700">
+                    {recentHistory.length} Scans
                   </span>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {recentHistory.slice(0, 6).map((item, idx) => (
-                    <div key={idx} className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between backdrop-blur-sm">
+                    <div key={idx} className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between backdrop-blur-sm">
                       <div>
                         <div className="font-semibold text-white text-sm">@{item.username}</div>
                         <div className="text-[11px] text-slate-400 mt-0.5">
@@ -561,21 +403,18 @@ function App() {
       </main>
 
       {/* Modern Product Footer */}
-      <footer className="relative z-10 border-t border-slate-800/80 bg-slate-950/90 backdrop-blur-md py-10 mt-16 text-slate-400 text-xs">
-        <div className="container mx-auto px-4 max-w-5xl flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-black text-sm">
+      <footer className="relative z-10 border-t border-slate-800/80 bg-slate-950/90 backdrop-blur-md py-6 mt-12 text-slate-400 text-xs">
+        <div className="container mx-auto px-4 max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2.5">
+            <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center text-white font-black text-xs">
               F
             </div>
-            <div>
-              <p className="text-slate-200 font-semibold text-sm">FADE Engine</p>
-              <p className="text-slate-500">Instagram Fake Account Detection & Verification Platform</p>
-            </div>
+            <p className="text-slate-300 font-semibold text-xs">FADE • Fake Account Detection</p>
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-5">
             <button onClick={() => navigateTo('landing')} className="hover:text-blue-400 transition-colors cursor-pointer">
-              Public Scanner
+              Scanner
             </button>
             <button onClick={handleDashboardClick} className="hover:text-blue-400 transition-colors cursor-pointer">
               Dashboard
@@ -583,13 +422,10 @@ function App() {
             <a href="http://localhost:8000/docs" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
               API Docs
             </a>
-            <a href="http://localhost:8000/health" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
-              Health Status
-            </a>
           </div>
 
-          <p className="text-slate-500 text-center md:text-right">
-            Production-grade Machine Learning for Social Network Integrity.
+          <p className="text-slate-500 text-center sm:text-right">
+            © 2026 FADE. All rights reserved.
           </p>
         </div>
       </footer>

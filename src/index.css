@@ -17,3 +17,31 @@
   animation: fadeIn 0.5s ease-out;
 }
 
+/* Form text visibility: dark text on light containers */
+.bg-white input:not([type="checkbox"]):not([type="radio"]),
+.bg-white textarea,
+.bg-white select,
+[class*="bg-white"] input:not([type="checkbox"]):not([type="radio"]),
+[class*="bg-white"] textarea,
+[class*="bg-white"] select {
+  color: #0f172a !important;
+}
+
+/* Form text visibility: crisp bright white text on dark containers (Login, Register, Dashboard) */
+.bg-slate-900 input:not([type="checkbox"]):not([type="radio"]),
+.bg-slate-900 textarea,
+.bg-slate-900 select,
+.bg-slate-950 input:not([type="checkbox"]):not([type="radio"]),
+.bg-slate-950 textarea,
+.bg-slate-950 select,
+[class*="bg-slate"] input:not([type="checkbox"]):not([type="radio"]),
+[class*="bg-slate"] textarea,
+[class*="bg-slate"] select,
+input.text-white,
+textarea.text-white,
+select.text-white {
+  color: #ffffff !important;
+}
+
+
+

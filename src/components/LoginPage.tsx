@@ -93,28 +93,24 @@ export default function LoginPage({ onSuccess, onNavigateRegister, onNavigateHom
             </div>
 
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight mb-4">
-              Defend your brand against fake profiles & bots.
+              Sign in to FADE
             </h3>
             <p className="text-sm text-slate-300 leading-relaxed mb-6">
-              Access real-time machine learning threat forensics, automated profile telemetry, and historical threat logs powered by our 91.4% benchmark-accurate model.
+              Access your security dashboard, scan history, and account settings.
             </p>
 
             <div className="space-y-3.5 mb-8">
               <div className="flex items-center gap-3 text-xs text-slate-300">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>16-feature behavioral & structural ML classifier</span>
+                <span>Instant profile authenticity scans</span>
               </div>
               <div className="flex items-center gap-3 text-xs text-slate-300">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>Sub-15ms inference latency on live profiles</span>
+                <span>Threat history & exportable logs</span>
               </div>
               <div className="flex items-center gap-3 text-xs text-slate-300">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>Full historical audit trail & CSV export</span>
-              </div>
-              <div className="flex items-center gap-3 text-xs text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>REST API access & developer webhooks</span>
+                <span>API integration for developers</span>
               </div>
             </div>
           </div>
@@ -196,7 +192,8 @@ export default function LoginPage({ onSuccess, onNavigateRegister, onNavigateHom
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="analyst@organization.com"
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+                    style={{ color: '#ffffff', backgroundColor: '#020617' }}
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white font-medium placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
                   />
                 </div>
               </div>
@@ -224,7 +221,8 @@ export default function LoginPage({ onSuccess, onNavigateRegister, onNavigateHom
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+                    style={{ color: '#ffffff', backgroundColor: '#020617' }}
+                    className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white font-medium placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
                   />
                   <button
                     type="button"
@@ -285,3 +283,4 @@ export default function LoginPage({ onSuccess, onNavigateRegister, onNavigateHom
     </div>
   );
 }
+

@@ -5,5 +5,19 @@
     "email": "demo@fade.ai",
     "password_hash": "2382a55ce81dd32e1678f66a6aa954217bdf27d2d5fe68e231a465d0209c50a2",
     "created_at": "2026-11-06T08:09:27.895960+00:00"
+  },
+  "4al23ai046@aiet.org.in": {
+    "id": "user_46487df3",
+    "name": "rakshi",
+    "email": "4al23ai046@aiet.org.in",
+    "password_hash": "a7121d7e06b6293ce96af150216853716d5adc49c50a3ddebef2276b7675ed55",
+    "created_at": "2026-11-06T08:52:29.123310+00:00"
+  },
+  "4al23ai008@aiet.org.in": {
+    "id": "user_9412f216",
+    "name": "anjali",
+    "email": "4al23ai008@aiet.org.in",
+    "password_hash": "6c344a9f30f57d35dae2c095c03fdf0f7f00db9ba47d8eb7fcb99a9850e1d66c",
+    "created_at": "2026-11-06T09:56:15.085219+00:00"
   }
 }

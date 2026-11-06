@@ -28,3 +28,4 @@ async def get_dashboard_stats():
         model_name=predictor.model_name,
         benchmark_accuracy=round(acc * 100, 1)
     )
+
